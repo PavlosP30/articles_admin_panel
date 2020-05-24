@@ -62,17 +62,13 @@
                                                 </div>
                                                 <div class="col-12 col-md-9">
                                                     <select name="category_id" id="select" class="form-control" required>
-                                                        <option value="{{ data['article'].category_id }}">
-                                                            {% for category in data['news_categories'] %}
-                                                                {% if data['article'].category_id == category.id %} 
-                                                                    {{ category.title }}
-                                                                {% endif %}
-                                                            {% endfor %}
-                                                        </option>
                                                         {% for category in data['news_categories'] %}
-                                                        <option value="{{category.id}}">{{category.title}}</option>
+                                                            {% if data['article'].category_id == category.id %} 
+                                                                <option value="{{category.id}}" selected>{{category.title}}</option>
+                                                            {% else %}
+                                                                <option value="{{category.id}}">{{category.title}}</option>
+                                                            {% endif %}
                                                         {% endfor %}
-        
                                                     </select>
                                                     <small class="form-text text-muted">The news category the article will belong to</small>
                                                 </div>
