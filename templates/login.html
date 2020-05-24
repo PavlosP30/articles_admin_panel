@@ -1,0 +1,51 @@
+{% extends "header.html" %}
+{% block content %}
+<body class="animsition">
+    <div class="page-wrapper">
+        <div class="page-content--bge5">
+            <div class="container">
+                <div class="login-wrap">
+                    <div class="login-content">
+                        <div class="login-logo">
+                            <a href="">
+                                <img src="{{ url_for('static', filename='images/icon/logo.png') }}" alt="CoolAdmin">
+                            </a>
+                        </div>
+                        <div class="login-form">
+                            <form action="" method="post">
+                                <div class="form-group">
+                                    <div class="input-group">
+                                        <div class="input-group-addon">
+                                            <i class="fa fa-envelope"></i>
+                                        </div>
+                                        <input type="email" name="email" placeholder="Email" class="form-control" required>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="input-group">
+                                        <div class="input-group-addon">
+                                            <i class="fa fa-asterisk"></i>
+                                        </div>
+                                        <input type="password" name="password" placeholder="Password" class="form-control" required>
+                                    </div>
+                                </div>
+                                <button class="au-btn au-btn--block au-btn--green m-b-20" type="submit">sign in</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+          
+    {% if data['error_message'] %}
+        <script>
+            alert("{{ data['error_message'] }}");
+        </script>          
+    {% endif %}      
+
+    {% include 'includes/dependencies.html' %}
+    
+</body>
+{% endblock %}

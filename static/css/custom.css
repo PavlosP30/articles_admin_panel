@@ -1,0 +1,15 @@
+.header-button {
+    margin-left: auto;
+}
+
+#logo {
+    transition: all 0.4s ease-in-out;
+    position: absolute;
+    width: 70%;
+    margin: auto;
+    display: block;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    top: 0;
+}

@@ -1,0 +1,125 @@
+{% extends "header.html" %}
+{% block content %}
+<body class="animsition">
+    <div class="page-wrapper">
+        <!-- HEADER MOBILE-->
+        {% include 'includes/header_mobile.html' %}
+        <!-- END HEADER MOBILE-->
+
+        <!-- MENU SIDEBAR-->
+        {% include 'includes/menu_sidebar.html' %}
+        <!-- END MENU SIDEBAR-->
+
+        <!-- PAGE CONTAINER-->
+        <div class="page-container">
+            <!-- HEADER DESKTOP-->
+            {% include 'includes/header_desktop.html' %}
+            <!-- HEADER DESKTOP-->
+
+            <!-- MAIN CONTENT-->
+            <div class="main-content">
+                <div class="section__content section__content--p30">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <h1>Add New Article</h1>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="card">
+                                    <div class="card-body card-block">
+                                        <form action="{{ url_for('article_add') }}" id="article_form" class="form-horizontal" method="POST">
+                                            <div class="row form-group">
+                                                <div class="col col-md-3">
+                                                    <label for="text-input" class=" form-control-label">Title</label>
+                                                </div>
+                                                <div class="col-12 col-md-9">
+                                                    <input type="text" id="text-input" name="title" placeholder="Please enter a title..." class="form-control" required>
+                                                </div>
+                                            </div>
+                                            <div class="row form-group">
+                                                <div class="col col-md-3">
+                                                    <label for="text-input" class=" form-control-label">Summary</label>
+                                                </div>
+                                                <div class="col-12 col-md-9">
+                                                    <input type="text" id="text-input" name="summary" placeholder="Please enter a summary..." class="form-control" required>
+                                                </div>
+                                            </div>
+                                            <div class="row form-group">
+                                                <div class="col col-md-3">
+                                                    <label for="textarea-input" class=" form-control-label">Content</label>
+                                                </div>
+                                                <div class="col-12 col-md-9">
+                                                    <textarea name="content" id="editor" required>
+                                                        &lt;p&gt;This is some sample content.&lt;/p&gt;
+                                                    </textarea>
+                                                </div>
+                                            </div>
+                                            <div class="row form-group">
+                                                <div class="col col-md-3">
+                                                    <label for="select" class=" form-control-label">Select</label>
+                                                </div>
+                                                <div class="col-12 col-md-9">
+                                                    <select name="category_id" id="select" class="form-control" required>
+                                                        <option value="0">Please select</option>
+                                                        {% for category in data['news_categories'] %}
+                                                        <option value="{{category.id}}">{{category.title}}</option>
+                                                        {% endfor %}
+        
+                                                    </select>
+                                                    <small class="form-text text-muted">The news category the article will belong to</small>
+                                                </div>
+                                            </div>
+                                            <div class="row form-group">
+                                                <div class="col col-md-3">
+                                                    <label class=" form-control-label">Publish</label>
+                                                </div>
+                                                <div class="col col-md-9">
+                                                    <div class="form-check-inline form-check">
+                                                        <label for="inline-radio1" class="form-check-label ">
+                                                            <input type="radio" id="inline-radio1" name="pub_status" value="1" class="form-check-input" required>Yes
+                                                        </label>
+                                                        <label for="inline-radio2" class="form-check-label ">
+                                                            <input type="radio" id="inline-radio2" name="pub_status" value="0" class="form-check-input" required>No
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="card-footer">
+                                                <button type="submit" class="btn btn-primary btn-sm">
+                                                    <i class="fa fa-dot-circle-o"></i> Submit
+                                                </button>
+                                                <button type="reset" class="btn btn-danger btn-sm" onclick="resetForm();">
+                                                    <i class="fa fa-ban"></i> Reset
+                                                </button>
+                                            </div>        
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        {% include 'includes/footer.html' %}
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    
+    {% include 'includes/dependencies.html' %}
+
+    <script>
+        ClassicEditor
+            .create( document.querySelector( '#editor' ) )
+            .catch( error => {
+                console.error( error );
+            } );
+
+        function resetForm() {
+            document.getElementById("article_form").reset();
+        }
+    </script>
+
+</body>
+{% endblock %}
