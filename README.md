@@ -8,12 +8,12 @@ An Admin Panel for Storing &amp; Updating News Articles
     *  https://github.com/PavlosP30/articles_admin_panel.git 
   *	Install Python on OS if required 
     *  https://www.python.org/downloads/
-  * Install Flask
-    *	 pip install Flask
   * Create an Environment
     *  py -m venv env
   * Activate the Environment
     *	 env\Scripts\activate
+  * Install Flask
+    *	 pip install Flask
   * Install Flask Modules
     * flask_sqlalchemy
       * pip install flask-sqlalchemy
